@@ -187,12 +187,12 @@ class Hikkup():
                                 # Store translated address on 'server port'
                                 self.addresses[s.getpeername()[1]] = result.group(2).decode()
                                 print("[*] Replaced Address: " + result.group(2).decode() )
-                                xml = result.group(1) + bytearray(self.local_addr) + result.group(3)
+                                xml = result.group(1) + bytearray(self.local_addr, 'utf8') + result.group(3)
 
                             result = re.match( b"([\s\S]*?Domain=\")(\d+\.\d+\.\d+\.\d+)(\"[\s\S]*)", xml )
                             if result:
                                 print("[*] Replaced Domain: " + result.group(2).decode() )
-                                xml = result.group(1) + bytearray(self.local_addr) + result.group(3)
+                                xml = result.group(1) + bytearray(self.local_addr, 'utf8') + result.group(3)
 
 
                             # TODO: listen to 6800+6900 and share the key
